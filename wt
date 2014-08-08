@@ -1,0 +1,13 @@
+#!/usr/bin/env ruby
+
+require_relative 'lib/environment'
+Environment.environment = ENV["DB"] || "development"
+
+require_relative 'lib/router'
+
+def clean_gets
+  (gets || "").chomp
+end
+
+daily_routine_controller = DailyRoutineController.new()
+daily_routine_controller.list
