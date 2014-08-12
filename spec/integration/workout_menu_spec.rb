@@ -1,4 +1,4 @@
-RSpec.describe "Viewing the workout menu", :integration do
+RSpec.describe "Viewing the workout menu;", :integration do
   let!(:routine1){ DailyRoutine.create(name: 'Tuesday') }
   let!(:routine2){ DailyRoutine.create(name: 'Wednesday') }
 

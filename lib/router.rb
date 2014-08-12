@@ -1,4 +1,16 @@
 class Router
+  def self.navigate_exercises_menu(exercises_controller)
+    command = clean_gets
+    case command
+    when "add"
+      exercises_controller.add
+    when /\d+/
+      exercises_controller.view(command.to_i)
+    else
+      puts "I don't know the '#{command}' command."
+    end
+  end
+
   def self.navigate_workouts_menu(workouts_controller)
     command = clean_gets
     case command
