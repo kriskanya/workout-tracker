@@ -17,5 +17,15 @@ RSpec.describe "Viewing the exercise menu", :integration do
     it "should list the exercises in the workout" do
       expect(output).to include("1. Pulldown\n")
     end
+    it "shouldn't list the exercises from other workouts" do
+      expect(output).not_to include("Bench Press")
+    end
+  end
+
+  context "if we enter an exercise that doesn't exist" do
+    let(:output){ run_wt_with_input('1', '1', '5') }
+    it "prints an error message" do
+      expect(output).to include("Exercise 5 doesn't exist")
+    end
   end
 end

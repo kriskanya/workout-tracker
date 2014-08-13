@@ -11,7 +11,7 @@ class WorkoutsController
     if workout.new_record?
       puts workout.errors.full_messages
     else
-      puts "#{name} has been added to the #{@origin_daily_routine.name} daily routine."
+      puts "#{name} has been added to the #{@origin_daily_routine.name} daily routine.".red
     end
   end
 
@@ -22,17 +22,18 @@ class WorkoutsController
     workouts.each_with_index do |workout, index|  # see the private method for 'workouts'
       puts "#{index + 1}. #{workout.name}"
     end
+    puts "Select a workout by # or type 'add' to add a new one."
     Router.navigate_workouts_menu(self)
   end
 
   def view(workout_number)
     workout = workouts[workout_number - 1]
     if workout
-      puts "You have selected the #{workout.name} workout."
+      puts "You have selected the #{workout.name} workout.".red
       exercises_controller = ExercisesController.new(workout)
       exercises_controller.list
     else
-      puts "Workout #{workout_number} doesn't exist."
+      puts "Workout #{workout_number} doesn't exist.".red
     end
   end
 

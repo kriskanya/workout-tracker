@@ -1,13 +1,13 @@
 RSpec.describe "WT Main Menu", :integration do
   context "Prints a menu" do
-    it "shows the name of the app, 'Workout Tracker'" do
-      actual = run_wt_with_input()
-      expected =
-      "=============="
-      "WORKOUT TRACKER"
-      "=============="
-      expect(actual).to include(expected)
-    end
+    # it "shows the name of the app, 'Workout Tracker'" do
+    #   actual = run_wt_with_input()
+    #   expected =
+    #   "=============="
+    #   "WORKOUT TRACKER"
+    #   "=============="
+    #   expect(actual).to include(expected)
+    # end
 
     context "when we type an incorrect command" do
       let(:output){ run_wt_with_input('remove') }

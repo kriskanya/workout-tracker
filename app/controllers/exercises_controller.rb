@@ -4,22 +4,22 @@ class ExercisesController
   end
 
   def add
-    puts "Which #{@origin_workout.name} exercise do you want to add?".red
+    puts "Which #{@origin_workout.name} exercise do you want to add?"
     name = clean_gets
-    puts "Write a brief description of the exercise.".green
+    puts "Write a brief description of the exercise."
     description = clean_gets
-    puts "How much weight?".blue
+    puts "How much weight?"
     weight = clean_gets
-    puts "How many reps?".magenta
+    puts "How many reps?"
     reps = clean_gets
-    puts "How many sets?".yellow
+    puts "How many sets?"
     sets = clean_gets
     exercise = Exercise.create(name: name, description: description, weight: weight, reps: reps, sets: sets, workout: @origin_workout)
 
     if exercise.new_record?
       puts exercise.errors.full_messages
     else
-      puts "#{name} has been added to the #{@origin_workout.name} workout."
+      puts "#{name} has been added to the #{@origin_workout.name} workout.".red
     end
   end
 
@@ -27,9 +27,16 @@ class ExercisesController
     puts "=============="
     puts "#{@origin_workout.daily_routine.name.upcase}: #{@origin_workout.name.upcase} EXERCISES"
     puts "=============="
+
     exercises.each_with_index do |exercise, index|
-      "#{index + 1}. #{exercise}"
+      puts "#{index + 1}. #{exercise.name}"
+      puts "Description: #{exercise.description}"
+      puts "Weight: #{exercise.weight}"
+      puts "Sets: #{exercise.sets}"
+      puts "Reps: #{exercise.reps}"
+      puts "=============="
     end
+    puts "Type 'add' to add a new exercise."
     Router.navigate_exercises_menu(self)
   end
 

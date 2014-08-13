@@ -8,7 +8,7 @@ RSpec.describe "Adding workouts to a daily routine", :integration do
       expect(output).to include("Chest and Triceps has been added to the Wednesday daily routine.")
     end
 
-    it "saves the correct daily routine to the record" do
+    it "saves the workout to the correct daily routine" do
       expect(Workout.last.daily_routine_id).to eq daily_routine2.id
     end
 
